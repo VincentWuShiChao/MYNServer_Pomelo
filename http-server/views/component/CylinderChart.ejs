@@ -1,0 +1,104 @@
+
+<!--柱状图-->
+<div class="w3ls_agile_cylinder chart agile_info_shadow">
+    <h3 class="w3_inner_tittle two">年流量/人</h3>
+
+    <div id="chartdiv"></div>
+
+
+</div>
+<!-- Chart code -->
+<script>
+    window.onload=function () {
+        $.get("/BSM/GetDefault", function (result) {
+            result=JSON.parse(result);
+            var chart = AmCharts.makeChart("chartdiv", {
+                "theme": "light",
+                "type": "serial",
+                "startDuration": 2,
+                "dataProvider": [{
+                    "country": "1月",
+                    "visits": result._1.visits,
+                    "color": "#FF0F00"
+                }, {
+                    "country": "2月",
+                    "visits": result._2.visits,
+                    "color": "#FF6600"
+                }, {
+                    "country": "3月",
+                    "visits": result._3.visits,
+                    "color": "#FF9E01"
+                }, {
+                    "country": "4月",
+                    "visits": result._4.visits,
+                    "color": "#FCD202"
+                }, {
+                    "country": "5月",
+                    "visits": result._5.visits,
+                    "color": "#F8FF01"
+                }, {
+                    "country": "6月",
+                    "visits": result._6.visits,
+                    "color": "#B0DE09"
+                }, {
+                    "country": "7月",
+                    "visits": result._7.visits,
+                    "color": "#04D215"
+                }, {
+                    "country": "8月",
+                    "visits": result._8.visits,
+                    "color": "#0D8ECF"
+                }, {
+                    "country": "9月",
+                    "visits": result._9.visits,
+                    "color": "#0D52D1"
+                }, {
+                    "country": "10月",
+                    "visits": result._10.visits,
+                    "color": "#2A0CD0"
+                }, {
+                    "country": "11月",
+                    "visits": result._11.visits,
+                    "color": "#8A0CCF"
+                }, {
+                    "country": "12月",
+                    "visits": result._12.visits,
+                    "color": "#CD0D74"
+                }],
+                "valueAxes": [{
+                    "position": "left",
+                    "axisAlpha":0,
+                    "gridAlpha":0
+                }],
+                "graphs": [{
+                    "balloonText": "[[category]]: <b>[[value]]</b>",
+                    "colorField": "color",
+                    "fillAlphas": 0.85,
+                    "lineAlpha": 0.1,
+                    "type": "column",
+                    "topRadius":1,
+                    "valueField": "visits"
+                }],
+                "depth3D": 40,
+                "angle": 30,
+                "chartCursor": {
+                    "categoryBalloonEnabled": false,
+                    "cursorAlpha": 0,
+                    "zoomable": false
+                },
+                "categoryField": "country",
+                "categoryAxis": {
+                    "gridPosition": "start",
+                    "axisAlpha":0,
+                    "gridAlpha":0
+
+                },
+                "export": {
+                    "enabled": true
+                }
+
+            }, 0);
+        })
+    };
+</script>
+<!-- Chart code -->

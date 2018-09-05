@@ -1,0 +1,31 @@
+{
+
+	"gate": [
+		{"id": "gate-server-1", "host": "127.0.0.1", "port": 3014, "frontend": true,"count":0}
+	],
+	"connector": [
+		{"id": "connector-server-1", "host": "127.0.0.1", "port": 3150, "frontend": true,"count":0},
+		{"id": "connector-server-2", "host": "127.0.0.1", "port": 3151, "frontend": true,"count":0},
+		{"id": "connector-server-3", "host": "127.0.0.1", "port": 3152, "frontend": true,"count":0}
+	],
+	"chat": [
+		{"id":"chat-server-1","host":"127.0.0.1","port":3450,"count":0},
+		{"id":"chat-server-2","host":"127.0.0.1","port":3451,"count":0}
+	],
+	"match": [
+		{"id": "match-server-1", "host": "127.0.0.1", "port": 3250, "count":0},
+		{"id": "match-server-2", "host": "127.0.0.1", "port": 3251, "count":0},
+		{"id": "match-server-3", "host": "127.0.0.1", "port": 3252,  "count":0}
+	],
+	"path": [
+		{"id": "path-server-1", "host": "127.0.0.1", "port": 3550,"count":0}
+	],
+	"auth": [
+		{"id": "auth-server-1", "host": "127.0.0.1", "port": 3650,"count":0}
+	],
+
+	"manager": [
+		{"id":"manager-server-1","host":"127.0.0.1","port":3750,"count":0}
+	]
+
+}

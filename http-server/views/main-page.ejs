@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+<title>Home</title>
+<!-- custom-theme -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<!-- //custom-theme -->
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/component.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/export.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/flipclock.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/circles.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/style_grid.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+<!-- font-awesome-icons -->
+<link href="/css/font-awesome.css" rel="stylesheet">
+<!-- //font-awesome-icons -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+</head>
+<body>
+<script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+<script src="/js/amcharts.js"></script>
+<script src="/js/serial.js"></script>
+<script src="/js/export.js"></script>
+<script src="/js/light.js"></script>
+<script src="/js/Chart.min.js"></script>
+<script src="/js/modernizr.custom.js"></script>
+<script src="/js/classie.js"></script>
+<script type="text/javascript" src="/js/circles.js"></script>
+<script>
+	var colors = [
+		['#ffffff', '#fd9426'], ['#ffffff', '#fc3158'],['#ffffff', '#53d769'], ['#ffffff', '#147efb']
+	];
+	for (var i = 1; i <= 4; i++) {
+		var child = document.getElementById('circles-' + i),
+				percentage = 30 + (i * 10);
+
+		Circles.create({
+			id:         child.id,
+			percentage: percentage,
+			radius:     80,
+			width:      10,
+			number:   	percentage / 1,
+			text:       '%',
+			colors:     colors[i - 1]
+		});
+	}
+</script>
+<script src="/js/skycons.js"></script>
+<script>
+	var icons = new Skycons({"color": "#fcb216"}),
+			list  = [
+				"partly-cloudy-day"
+			],
+			i;
+
+	for(i = list.length; i--; )
+		icons.set(list[i], list[i]);
+	icons.play();
+</script>
+<script>
+	var icons = new Skycons({"color": "#fff"}),
+			list  = [
+				"clear-night","partly-cloudy-night", "cloudy", "clear-day", "sleet", "snow", "wind","fog"
+			],
+			i;
+
+	for(i = list.length; i--; )
+		icons.set(list[i], list[i]);
+	icons.play();
+</script>
+<!--//skycons-icons-->
+<!-- //js -->
+<script src="/js/screenfull.js"></script>
+<script>
+	$(function () {
+		$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+
+		if (!screenfull.enabled) {
+			return false;
+		}
+
+
+
+		$('#toggle').click(function () {
+			screenfull.toggle($('#container')[0]);
+		});
+	});
+</script>
+<script src="/js/flipclock.js"></script>
+
+<script type="text/javascript">
+	var clock;
+
+	$(document).ready(function() {
+
+		clock = $('.clock').FlipClock({
+			clockFace: 'HourlyCounter'
+		});
+	});
+</script>
+<script src="/js/bars.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+<script src="/js/scripts.js"></script>
+
+<script type="text/javascript" src="/js/bootstrap-3.1.1.min.js"></script>
+<!-- banner -->
+<div class="wthree_agile_admin_info">
+		<% include ./component/top.ejs%>
+		<div class="clearfix"></div>
+				<div class="inner_content">
+					   <div class="agile_top_w3_grids">
+					          <ul class="ca-menu">
+									<li>
+										<a href="#">
+											<i class="fa fa-building-o" aria-hidden="true"></i>
+											<div class="ca-content">
+												<h4 class="ca-main"><%=userCount.all%></h4>
+												<h3 class="ca-sub">总用户量</h3>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+										  <i class="fa fa-user" aria-hidden="true"></i>
+											<div class="ca-content">
+												<h4 class="ca-main one"><%=userCount.today%></h4>
+												<h3 class="ca-sub one">每日新用户量</h3>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="fa fa-database" aria-hidden="true"></i>
+											<div class="ca-content">
+											<h4 class="ca-main two"><%=userPay.all%></h4>
+												<h3 class="ca-sub two">总充值</h3>
+											</div>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="fa fa-tasks" aria-hidden="true"></i>
+											<div class="ca-content">
+												<h4 class="ca-main three"><%=userPay.today%></h4>
+												<h3 class="ca-sub three">日充值</h3>
+											</div>
+										</a>
+									</li>
+									<div class="clearfix"></div>
+								</ul>
+					   </div>
+
+					<div class="agile_top_w3_post_sections">
+						<% include ./component/CylinderChart.ejs%>
+						<div class="prograc-blocks_agileits">
+							<%# include ./component/DailySales.ejs%>
+							<%# include ./component/TableProgress.ejs%>
+							<div class="clearfix"></div>
+						</div>
+						<div class="bottom_agileits_grids">
+							<%# include ./component/Person.ejs%>
+							<%# include ./component/StackedBarChart.ejs%>
+							<div class="clearfix"></div>
+						</div>
+						<%# include ./component/weather.ejs%>
+						<%# include ./component/SocialMedia.ejs%>
+				    </div>
+				</div>
+	</div>
+<!-- banner -->
+<!--copy rights start here-->
+<div class="copyrights">
+	 <p>Copyright &copy; 2017.Company name All rights reserved.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!--相反值轴线图-->
+<div class="charts_section_agileinfo">
+    <!--<div class="charts_agile_w3ls agile_info_shadow">
+        <h3 class="w3_inner_tittle two">Reversed Value Axis</h3>
+        <div id="chartdiv7"></div>
+    </div>-->
+
+    <div id="chartdiv7"></div>
+
+</div>
+<script src="/js/amcharts.js"></script>
+<script src="/js/serial.js"></script>
+<script src="/js/export.js"></script>
+<script src="/js/light.js"></script>
+<script src="/js/xy.js"></script>
+<script src="/js/gauge.js"></script>
+<script src="/js/radar.js"></script>
+<script src="/js/pie.js"></script>
+<script>
+    var chart = AmCharts.makeChart("chartdiv7", {
+        "type": "serial",
+        "theme": "light",
+        "legend": {
+            "useGraphSettings": true
+        },
+        "dataProvider": [{
+            "year": "0:01-2:00",
+            "all": 1,
+            "man": 5,
+            "women": 3
+        }, {
+            "year": 1934,
+            "all": 1,
+            "man": 2,
+            "women": 6
+        }, {
+            "year": 1938,
+            "all": 2,
+            "man": 3,
+            "women": 1
+        }, {
+            "year": 1950,
+            "all": 3,
+            "man": 4,
+            "women": 1
+        }, {
+            "year": 1954,
+            "all": 5,
+            "man": 1,
+            "women": 2
+        }, {
+            "year": 1958,
+            "all": 3,
+            "germany": 2,
+            "women": 1
+        }, {
+            "year": 1962,
+            "all": 1,
+            "man": 2,
+            "women": 3
+        }, {
+            "year": 1966,
+            "all": 2,
+            "germany": 1,
+            "women": 5
+        }, {
+            "year": 1970,
+            "all": 3,
+            "man": 5,
+            "women": 2
+        }, {
+            "year": 1974,
+            "all": 4,
+            "man": 3,
+            "women": 6
+        }, {
+            "year": 1978,
+            "all": 1,
+            "man": 2,
+            "women": 4
+        }],
+        "valueAxes": [{
+            "integersOnly": true,
+            "maximum": 6,
+            "minimum": 1,
+            "reversed": true,
+            "axisAlpha": 0,
+            "dashLength": 5,
+            "gridCount": 10,
+            "position": "left",
+            "title": "Place taken"
+        }],
+        "startDuration": 0.5,
+        "graphs": [{
+            "balloonText": "place taken by Italy in [[category]]: [[value]]",
+            "bullet": "round",
+            "hidden": true,
+            "title": "All",
+            "valueField": "all",
+            "fillAlphas": 0
+        }, {
+            "balloonText": "place taken by Germany in [[category]]: [[value]]",
+            "bullet": "round",
+            "title": "Man",
+            "valueField": "man",
+            "fillAlphas": 0
+        }, {
+            "balloonText": "place taken by UK in [[category]]: [[value]]",
+            "bullet": "round",
+            "title": "Women",
+            "valueField": "women",
+            "fillAlphas": 0
+        }],
+        "chartCursor": {
+            "cursorAlpha": 0,
+            "zoomable": false
+        },
+        "categoryField": "year",
+        "categoryAxis": {
+            "gridPosition": "start",
+            "axisAlpha": 0,
+            "fillAlpha": 0.05,
+            "fillColor": "#000000",
+            "gridAlpha": 0,
+            "position": "top"
+        },
+        "export": {
+            "enabled": true,
+            "position": "bottom-right"
+        }
+    });
+
+</script>

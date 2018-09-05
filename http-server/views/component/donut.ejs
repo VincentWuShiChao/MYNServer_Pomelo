@@ -1,0 +1,37 @@
+<!--环形统计-->
+<div class="charts_agile_w3ls agile_info_shadow">
+    <h3 class="w3_inner_tittle two">性别对比图：</h3>
+    <div id="chartdiv8"></div>
+    <% include ./ReversedValueAxis.ejs%>
+</div>
+<script src="/js/amcharts.js"></script>
+<script src="/js/serial.js"></script>
+<script src="/js/export.js"></script>
+<script src="/js/light.js"></script>
+<script src="/js/xy.js"></script>
+<script src="/js/gauge.js"></script>
+<script src="/js/radar.js"></script>
+<script src="/js/pie.js"></script>
+<script>
+    var chart = AmCharts.makeChart( "chartdiv8", {
+        "type": "pie",
+        "theme": "light",
+        "dataProvider": [ {
+            "title": `男（${4852+9899}）`,
+            "value": 4852
+        }, {
+            "title": "女",
+            "value": 9899
+        } ],
+        "titleField": "title",
+        "valueField": "value",
+        "labelRadius": 5,
+
+        "radius": "42%",
+        "innerRadius": "60%",
+        "labelText": "[[title]]",
+        "export": {
+            "enabled": true
+        }
+    } );
+</script>

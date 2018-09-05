@@ -1,0 +1,95 @@
+<script>
+    function change(ob){
+        let index=ob.options[ob.selectedIndex].value;
+        //alert(index);
+        if(index>=0){
+            window.location.href=`/BSM/LoginList?page=1&index=${index}`;
+        }
+    }
+</script>
+
+<div class="w3l-table-info agile_info_shadow">
+    <h3 class="w3_inner_tittle two">用户注册列表</h3>
+        <select class="input-sm" id="logs" onchange="change(this)">
+            <option value="-1">日志列表</option>
+            <% for(var i=0;i<logs.length;i++){%>
+            <option value="<%=i%>"><%=logs[i]%></option>
+            <% }%>
+        </select>
+    <div class="agile_info_shadow" style="float: right;margin-bottom: 20px"><%=fileName%></div>
+    <table id="table">
+        <thead>
+        <tr>
+            <th>名字</th>
+            <th>首次登录时间</th>
+            <th>末次登录时间</th>
+            <th>登录次数</th>
+            <th>地区</th>
+            <th>城市</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%if(users.length<10){%>
+        <%for(let i=0;i<users.length;i++){%>
+        <tr>
+            <td><%=users[i].adminName%></td>
+            <td><%=users[i].loginTime%></td>
+            <td><%=users[i].lastTime%></td>
+            <td><%=users[i].count%></td>
+            <td><%=users[i].ipAddr.region%></td>
+            <td><%=users[i].ipAddr.city%></td>
+        </tr>
+        <%}%>
+        <%for(let i=0;i<10-users.length;i++){%>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <%}%>
+        <%}else{%>
+        <%for(let i=0;i<users.length;i++){%>
+        <tr>
+            <td><%=users[i].adminName%></td>
+            <td><%=users[i].loginTime%></td>
+            <td><%=users[i].lastTime%></td>
+            <td><%=users[i].count%></td>
+            <td><%=users[i].ipAddr.region%></td>
+            <td><%=users[i].ipAddr.city%></td>
+        </tr>
+        <%}%>
+        <%}%>
+        </tbody>
+    </table>
+    当前页数为< <%=pages.page%> / <%=pages.allPage%>>
+    <button type="button" class="grow" id="up" onclick="up(<%=JSON.stringify(pages)%>)">上一页</button>
+    <button type="button" class="grow" id="down" onclick="down(<%=JSON.stringify(pages)%>)">下一页</button>
+</div>
+<script>
+    function up(pages){
+        let nextPage=0;
+        if(Number(pages.page)-1<=0){
+           alert("已经是首页了");
+        }else {
+            nextPage=Number(pages.page)-1;
+            console.log(nextPage);
+            window.location.href=`/BSM/LoginList?page=${nextPage}&index=${pages.index}`;
+        }
+
+    }
+    function down(pages){
+        let nextPage=0;
+        if(Number(pages.page)+1>Number(pages.allPage)){
+            alert("已经是最后一页了");
+        }else {
+            nextPage=Number(pages.page)+1;
+            console.log(nextPage);
+            window.location.href=`/BSM/LoginList?page=${nextPage}&index=${pages.index}`;
+        }
+
+    }
+</script>
+
